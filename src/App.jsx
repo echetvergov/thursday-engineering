@@ -48,8 +48,6 @@ const i18n = {
     credTag: "Verified Industry Authority",
     credDevOps: "Certified DevOps Professional",
     credObs: "Certified Observability Professional",
-    credGcp: "Workspace Advisory Track",
-    credM365: "Enterprise Administration Specialist",
 
     trackTag: "Proven Engagements",
     trackTitle: "Delivered Outcomes",
@@ -73,7 +71,9 @@ const i18n = {
     location: "Brno, Czech Republic",
     modalTag: "System Intake // Secure Connection Protocol",
     modalClose: "Close [X]",
-    modalAlt: "Direct Routing Alternative:"
+    modalAlt: "Direct Routing Alternative:",
+    contactEmail: "e.chetvergov@thursday-engineering.com",
+    contactPhone: "+420 725 318 219",
   },
   cs: {
     navServices: "Služby",
@@ -121,8 +121,6 @@ const i18n = {
     credTag: "Ověřená Průmyslová Autorita",
     credDevOps: "Certified DevOps Professional",
     credObs: "Certified Observability Professional",
-    credGcp: "Workspace Advisory Track",
-    credM365: "Enterprise Administration Specialist",
 
     trackTag: "Prokázané Projekty",
     trackTitle: "Dosažené Výsledky",
@@ -146,7 +144,9 @@ const i18n = {
     location: "Brno, Česká republika",
     modalTag: "Systémový Příjem // Protokol Zabezpečeného Připojení",
     modalClose: "Zavřít [X]",
-    modalAlt: "Alternativní přímé spojení:"
+    modalAlt: "Alternativní přímé spojení:",
+    contactEmail: "e.chetvergov@thursday-engineering.com",
+    contactPhone: "+420 123 456 789",
   }
 };
 
@@ -199,6 +199,7 @@ const CaseStudyLog = ({ number, title, description, businessImpact, scopeLabel, 
 export default function App() {
   const [lang, setLang] = useState('en');
   const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const t = i18n[lang];
 
@@ -255,8 +256,43 @@ export default function App() {
             >
               {t.btnBook}
             </button>
+
+            {/* MOBILE HAMBURGER */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex flex-col gap-1.5 md:hidden ml-2"
+              aria-label="Toggle menu"
+            >
+              <span className={`block w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </button>
           </nav>
         </div>
+
+        {/* MOBILE MENU DROPDOWN */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-black/10 mt-4 pt-4 flex flex-col gap-4 px-2">
+            <a href="#services" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+              <span className="text-[10px] font-bold text-[#0047AB] font-mono">01</span>
+              <span className="text-xs font-bold uppercase tracking-wider">{t.navServices}</span>
+            </a>
+            <a href="#credentials" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+              <span className="text-[10px] font-bold text-[#0047AB] font-mono">02</span>
+              <span className="text-xs font-bold uppercase tracking-wider">{t.navCredentials}</span>
+            </a>
+            <a href="#track-record" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+              <span className="text-[10px] font-bold text-[#0047AB] font-mono">03</span>
+              <span className="text-xs font-bold uppercase tracking-wider">{t.navTrackRecord}</span>
+            </a>
+            <button
+              onClick={() => { setIsConnectOpen(true); setMobileMenuOpen(false); }}
+              className="bg-black text-white px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#0047AB] transition-all w-full text-left"
+            >
+              {t.btnBook}
+            </button>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
@@ -308,11 +344,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* CREDENTIALS */}
+      {/* CREDENTIALS — only real, verified certs */}
       <section id="credentials" className="py-20 px-8 border-t border-b border-black/10 bg-black text-white">
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] font-mono uppercase tracking-widest font-bold text-white/40 mb-10">{t.credTag}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col gap-1 border-l-2 border-[#0047AB] pl-4">
               <span className="text-[9px] font-mono text-white/40 uppercase">Oracle Cloud Infrastructure</span>
               <span className="font-bold text-base tracking-tight">{t.credDevOps}</span>
@@ -322,16 +358,6 @@ export default function App() {
               <span className="text-[9px] font-mono text-white/40 uppercase">Oracle Cloud Infrastructure</span>
               <span className="font-bold text-base tracking-tight">{t.credObs}</span>
               <span className="text-[9px] font-mono text-[#0047AB] font-bold mt-1">VALID // OCT 2027</span>
-            </div>
-            <div className="flex flex-col gap-1 border-l-2 border-white/20 pl-4 text-white/60">
-              <span className="text-[9px] font-mono text-white/30 uppercase">Google Cloud Ecosystem</span>
-              <span className="font-bold text-base tracking-tight">{t.credGcp}</span>
-              <span className="text-[9px] font-mono text-white/30 font-bold mt-1">ENTERPRISE_READY</span>
-            </div>
-            <div className="flex flex-col gap-1 border-l-2 border-white/20 pl-4 text-white/60">
-              <span className="text-[9px] font-mono text-white/30 uppercase">Microsoft 365 Architecture</span>
-              <span className="font-bold text-base tracking-tight">{t.credM365}</span>
-              <span className="text-[9px] font-mono text-white/30 font-bold mt-1">COMPLIANCE_ALIGNED</span>
             </div>
           </div>
         </div>
@@ -345,25 +371,23 @@ export default function App() {
         </div>
 
         <CaseStudyLog
-          number="Pillar_01"
+          number="01"
           title={t.case1Title}
           description={t.case1Desc}
           businessImpact={t.case1Impact}
           scopeLabel={t.scopeTag}
           outcomeLabel={t.outcomeTag}
         />
-
         <CaseStudyLog
-          number="Pillar_02"
+          number="02"
           title={t.case2Title}
           description={t.case2Desc}
           businessImpact={t.case2Impact}
           scopeLabel={t.scopeTag}
           outcomeLabel={t.outcomeTag}
         />
-
         <CaseStudyLog
-          number="Pillar_03"
+          number="03"
           title={t.case3Title}
           description={t.case3Desc}
           businessImpact={t.case3Impact}
@@ -373,7 +397,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-48 px-8 bg-black text-white">
+      <footer className="py-24 px-8 bg-black text-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-16">
           <div className="max-w-xl">
             <p className="text-[10px] font-mono uppercase tracking-widest mb-10 opacity-40">{t.footerTag}</p>
@@ -383,6 +407,20 @@ export default function App() {
               </button>
               <a href="https://www.linkedin.com/in/evgeny-chetvergov-29b108203/" target="_blank" rel="noreferrer" className="text-3xl md:text-5xl font-black opacity-30 hover:opacity-100 hover:text-[#0047AB] transition-all leading-none tracking-tighter uppercase">
                 LinkedIn Profile
+              </a>
+              {/* EMAIL */}
+              <a
+                href={`mailto:${t.contactEmail}`}
+                className="text-xl md:text-2xl font-black opacity-30 hover:opacity-100 hover:text-[#0047AB] transition-all leading-none tracking-tighter lowercase"
+              >
+                {t.contactEmail}
+              </a>
+              {/* PHONE */}
+              <a
+                href={`tel:${t.contactPhone.replace(/\s/g, '')}`}
+                className="text-xl md:text-2xl font-black opacity-30 hover:opacity-100 hover:text-[#0047AB] transition-all leading-none tracking-tighter"
+              >
+                {t.contactPhone}
               </a>
             </div>
           </div>
@@ -414,9 +452,12 @@ export default function App() {
               />
             </div>
 
-            <div className="border-t border-black/10 px-6 py-3 bg-white text-center">
-              <p className="text-[10px] font-mono text-black/40 font-bold uppercase">
-                {t.modalAlt} <a href="mailto:e.chetvergov@thursday-engineering.com" className="text-[#0047AB] underline">e.chetvergov@thursday-engineering.com</a>
+            <div className="border-t border-black/10 px-6 py-3 bg-white">
+              <p className="text-[10px] font-mono text-black/40 font-bold uppercase text-center">
+                {t.modalAlt}{' '}
+                <a href={`mailto:${t.contactEmail}`} className="text-[#0047AB] underline">{t.contactEmail}</a>
+                {' '}·{' '}
+                <a href={`tel:${t.contactPhone.replace(/\s/g, '')}`} className="text-[#0047AB] underline">{t.contactPhone}</a>
               </p>
             </div>
 
