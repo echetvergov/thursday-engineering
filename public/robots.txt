@@ -1,0 +1,7 @@
+# Thursday Engineering System Indexing Protocol
+User-agent: *
+Allow: /
+
+# Host declaration
+Host: https://thursday-engineering.com
+Sitemap: https://thursday-engineering.com/sitemap.xml
