@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F9F9F9] text-[#1A1A1A] antialiased;
+    /* Strict font usage: Inter for prose, Mono for data */
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .grid-border {
+    @apply border-[#1A1A1A] border-opacity-20;
+  }
+}
