@@ -136,11 +136,11 @@ const i18n = {
     perUser: "/ uživatel",
     pricingNote: "Ceny jsou bez DPH. Nevíte, který balíček zvolit? Začněte analýzou připravenosti.",
     packages: [
-      { name: "Starter", fit: "Do 25 uživatelů", price: "€45", min: "Min. €900 · 1–2 týdny", points: ["E-maily, kalendáře a kontakty", "Přepnutí DNS / MX, SPF, DKIM, DMARC", "1 školení pro tým"] },
-      { name: "Standard", fit: "25–150 uživatelů", price: "€65", min: "Min. €2 500 · 2–4 týdny", points: ["Vše ze Starteru", "OneDrive / SharePoint ⇄ Disk a sdílené disky", "Sdílené schránky, skupiny, aliasy", "Pilotní skupina + víkendové přepnutí", "30 dní podpory"] },
-      { name: "Complex", fit: "150+ uživatelů nebo více zdrojů", price: "Od €80", min: "Nabídka po analýze připravenosti", points: ["Vše ze Standardu", "Teams / Slack ⇄ Google Chat", "Migrace ve vlnách, SSO a správa zařízení", "Migrační plán na míru"] }
+      { name: "Starter", fit: "Do 25 uživatelů", price: "1 100 Kč", min: "Min. 22 000 Kč · 1–2 týdny", points: ["E-maily, kalendáře a kontakty", "Přepnutí DNS / MX, SPF, DKIM, DMARC", "1 školení pro tým"] },
+      { name: "Standard", fit: "25–150 uživatelů", price: "1 600 Kč", min: "Min. 60 000 Kč · 2–4 týdny", points: ["Vše ze Starteru", "OneDrive / SharePoint ⇄ Disk a sdílené disky", "Sdílené schránky, skupiny, aliasy", "Pilotní skupina + víkendové přepnutí", "30 dní podpory"] },
+      { name: "Complex", fit: "150+ uživatelů nebo více zdrojů", price: "Od 2 000 Kč", min: "Nabídka po analýze připravenosti", points: ["Vše ze Standardu", "Teams / Slack ⇄ Google Chat", "Migrace ve vlnách, SSO a správa zařízení", "Migrační plán na míru"] }
     ],
-    readinessTitle: "Analýza připravenosti — €390",
+    readinessTitle: "Analýza připravenosti — 9 900 Kč",
     readinessDesc: "Audit tenantu, písemný migrační plán a pevná nabídka. Celá částka se odečte z ceny projektu.",
 
     faqTag: "Otázky",
